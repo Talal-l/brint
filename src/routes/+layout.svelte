@@ -1,8 +1,9 @@
 <script>
   let { children } = $props();
+  import "../app.css";
 </script>
 
-<nav>
+<nav class="">
   <a href="/">Home</a>
   <a href="/qr">QR</a>
   <a href="/badge">Badge</a>
