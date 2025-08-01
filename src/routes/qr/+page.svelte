@@ -2,6 +2,7 @@
   import { invoke } from "@tauri-apps/api/core";
   import type { PageProps } from "./$types";
   import { listen } from "@tauri-apps/api/event";
+  import { goto } from "$app/navigation";
   let { data }: PageProps = $props();
 
   let frame = $state("");
@@ -12,7 +13,6 @@
 
   listen("camera_frame", (event) => {
     frame = event.payload as string;
-
     const image = new Image();
       image.onload = () => {
         const ctx = canvas?.getContext('2d');
@@ -25,6 +25,8 @@
 
     listen("qrcode_detected", (event) => {
       qrcode = event.payload as string;
+      goto("/badge" );
+      console.log("qrcode detected");
     });
 
 </script>
